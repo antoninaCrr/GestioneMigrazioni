@@ -2,7 +2,7 @@ package it.polito.tdp.borders.model;
 
 public class Event implements Comparable<Event>{
 	
-	private int time ;
+	private int time ; // il testo ci parla solo di T di simulazione, non di anni o date
 	private Country nazione ;
 	private int persone ;
 		
@@ -25,13 +25,10 @@ public class Event implements Comparable<Event>{
 		return persone;
 	}
 
-
-
-
-
+	// non abbiamo bisogno di set, in quanto l'oggetto, una volta creato, è immutabile
 
 	@Override
-	public int compareTo(Event other) {
+	public int compareTo(Event other) { // l'evento deve essere ordinabile secondo tempo
 		return this.time-other.time;
 	}
 

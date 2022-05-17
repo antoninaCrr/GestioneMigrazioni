@@ -1,26 +1,31 @@
-Evento ( T, Country, QUantità di persone )
+Proviamo a fare una simulazione scritta
+Evento ( T, Country, QUantità di persone ) 
 
-Evento ( 1, Italia, 1000 )
+Evento ( 1, Italia, 1000 ) -- ipotizziamo sia il primo evento estratto dalla coda
 	500 stanziali in Italia
 	4 confinanti -> 125 persone per stato confinante
 	crea eventi di ingresso
 	
 Evento (2, Francia, 125)
-	62 diventano stanziali in Francia
-	63 si dividono tra 5 stati confinanti: 12 per stato, 3 stanziali
+	62 (approssimo per difetto) diventano stanziali in Francia
+	63 si dividono tra 5 stati confinanti: 12 per stato*, 3 stanziali
+	in realtà alla fine avremo 62 + 3 stanziali
 	
 Evento (2, Svizzera, 125)
 	62 stanziali in Svizzera
-	63 si dividono in 4 stati confinanti: 15 per stato, 3 stanziali
+	63 si dividono in 4 stati confinanti: 15 per stato+, 3 stanziali
 	
 Evento (2, Austria, 125)
 Evento (2, Slovenia, 125)
-Evento (3, Spagna, 12)
-Evento (3, Italia, 12)
-Evento (3, Germania, 12)
-Evento (3, Belgio, 12)
-Evento (3, Olanda, 12)
-Evento (3, Francia, 15)
-Evento (3, Italia, 15)
-Evento (3, Germania, 15)
-Evento (3, Austria, 15)
+Evento (3, Spagna, 12)*
+Evento (3, Italia, 12)* ---  ci sono delle migrazioni di ritorno
+Evento (3, Germania, 12)*
+Evento (3, Belgio, 12)*
+Evento (3, Olanda, 12)*
+Evento (3, Francia, 15)+
+Evento (3, Italia, 15)+
+Evento (3, Germania, 15)+
+Evento (3, Austria, 15)+
+
+Al tempo 3 in Italia arrivano 12 persone della Francia e 15 persone dalla Svizzera. Come gestisco questi due eventi? Attendo che arrivino tutti i migranti per ripartirli oppure ad ogni arrivo smisto?
+La seconda strategia sarebbe la più semplice da implementare.

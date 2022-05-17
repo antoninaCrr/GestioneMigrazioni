@@ -63,24 +63,26 @@ public class Model {
 		return null;
 
 	}
-	
+	// aggiungiamo questi metodi per mettere in relazione controller e simulatore
 	public int simula(Country partenza) {
-		Simulatore sim = new Simulatore(this.graph) ;
+		Simulatore sim = new Simulatore(this.graph) ; // istanziamo un nuovo simulatore
 		sim.init(partenza, 1000);
 		sim.run();
-		this.personeStanziali = sim.getPersone();
+		this.personeStanziali = sim.getPersone(); // mi salvo la mappa con gli stanziali in ogni stato prima di ritornare il numero di passi
 		return sim.getnPassi() ;
 	}
 	
+	// con questo metodo ritorno al controller una lista già ordinato con le info di cui ha bisogno
+	// posso chiamarlo solo dopo che ho chiamato simula
 	public List<CountryAndNumber> getPersoneStanziali() {
 		List<CountryAndNumber> lista = new ArrayList<CountryAndNumber>() ;
-		for(Country c: this.personeStanziali.keySet()) {
-			int persone = this.personeStanziali.get(c) ;
+		for(Country c: this.personeStanziali.keySet()) { // per ogni country della mappa, se il numero di stanziali è diverso da 0
+			int persone = this.personeStanziali.get(c) ; // aggiungo stato e numero di stanziali a 'lista'
 			if(persone!=0) {
 				lista.add( new CountryAndNumber(c, persone));
 			}
 		}
-		
+		// devo ordinare per valore decrescente di numero di persone
 		Collections.sort(lista) ; 
 		return lista ;
 	}

@@ -62,7 +62,7 @@ public class FXMLController {
 
 	@FXML
 	void doSimula(ActionEvent event) {
-		Country c = boxNazione.getValue() ;
+		Country c = boxNazione.getValue() ; // estraggo la country dalla comboBox
 		int T = model.simula(c) ;
 		List<CountryAndNumber> stanziali = model.getPersoneStanziali() ;
 		
